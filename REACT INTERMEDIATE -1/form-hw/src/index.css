@@ -1,0 +1,37 @@
+body {
+  margin: 1% 20% 0 10%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  width: 70%;
+  height: 100vh;
+  border: 1px solid black;
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 0 10px;
+}
+
+.form p {
+  text-align: start;
+}
+
+.select-class {
+  text-align: left;
+  font-weight: 500;
+}
+
+.select-class p {
+  padding-left: 20px;
+  margin-top: 3px;
+  color: grey;
+  font-size: small;
+}
