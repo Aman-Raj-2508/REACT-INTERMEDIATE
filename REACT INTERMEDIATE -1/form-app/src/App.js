@@ -144,7 +144,7 @@ function App() {
           checked={formData.mode === "Offline-Mode"}
 
         />
-        <label htmlFor='Online-Mode'>Offline Mode</label>
+        <label htmlFor='Offline-Mode'>Offline Mode</label>
 
         <br></br>
         <br></br>
