@@ -3,6 +3,8 @@ import { useState } from 'react'
 
 function App() {
   const [formData, setformData] = useState({ firstname: "", lastname: "", email: "", country: "", address: "", city: "", postal: "", comments: "", candidates: "", offers: "" })
+  const [todo, setTodo] = useState([])
+
 
   console.log(formData);
 
@@ -90,45 +92,43 @@ function App() {
           value={formData.postal}
         />
 
-        <p>By email</p>
 
+        <fieldset>
+          <legend>  By email </legend>
 
-        <label htmlFor='comments' className='select-class' >
-          <input
-            type='checkbox'
-            name='comments'
-            id='comments'
-            onChange={changeHandler}
-            checked={formData.comments}
-          />
-          Comments
-          <p>Get Notified when someone post a comment.</p></label>
+          <label htmlFor='comments' className='select-class' >
+            <input
+              type='checkbox'
+              name='comments'
+              id='comments'
+              onChange={changeHandler}
+              checked={formData.comments}
+            />
+            Comments
+            <p>Get Notified when someone post a comment.</p></label>
 
-        <label htmlFor='candidates' className='select-class' >
-          <input
-            type='checkbox'
-            name='candidates'
-            id='candidates'
-            onChange={changeHandler}
-            checked={formData.candidates}
-          />
-          Candidates
-          <p>Get Notified when someone post a candidates.</p></label>
+          <label htmlFor='candidates' className='select-class' >
+            <input
+              type='checkbox'
+              name='candidates'
+              id='candidates'
+              onChange={changeHandler}
+              checked={formData.candidates}
+            />
+            Candidates
+            <p>Get Notified when someone post a candidates.</p></label>
 
-        <label htmlFor='offers' className='select-class' >
-          <input
-            type='checkbox'
-            name='offers'
-            id='offers'
-            onChange={changeHandler}
-            checked={formData.offers}
-          />
-          Offers
-          <p>Get Notified when someone post a offers.</p></label>
-
-
-
-
+          <label htmlFor='offers' className='select-class' >
+            <input
+              type='checkbox'
+              name='offers'
+              id='offers'
+              onChange={changeHandler}
+              checked={formData.offers}
+            />
+            Offers
+            <p>Get Notified when someone post a offers.</p></label>
+        </fieldset>
 
       </form>
     </div>
