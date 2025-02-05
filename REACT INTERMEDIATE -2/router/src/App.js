@@ -32,7 +32,7 @@ function App() {
 
       <Routes>
 
-        {/* Here we only made div to render different things.But if there is many thing in a homepage the this is no th way.We will make components */}
+        {/* Here we only made div to render different things.But if there is many thing in a homepage then this is not the way.We will make components */}
         {/* <Route path="/" element={<div>Home Page</div>} />
         <Route path="/support" element={<div>Support Page</div>} />
         <Route path="/about" element={<div>About Page</div>} />
