@@ -7,8 +7,12 @@ import { useNavigate } from 'react-router-dom';
 const SignupForm = ({ setIsLoggedIn }) => {
 
     const [formData, setformData] = useState({ firstname: '', lastname: '', email: '', password: '', confirmpassword: '' });
+    // Handling password
     const [showPassword, setshowPassword] = useState(false);
+    // For handling password
     const [confirmshowPassword, setconfirmshowPassword] = useState(false);
+    // instructor student tab
+    const [accountType, setAccountType] = useState("student");
 
     const navigate = useNavigate();
 
@@ -48,7 +52,15 @@ const SignupForm = ({ setIsLoggedIn }) => {
             ...formData
         };
 
-        console.log(accountData);
+        // console.log(accountData);
+
+        const finalData = {
+            ...accountData,
+            accountType
+        }
+
+        console.log("Printing final data")
+        console.log(finalData);
 
         navigate("/dashboard");
     }
@@ -58,11 +70,24 @@ const SignupForm = ({ setIsLoggedIn }) => {
         <div>
             {/* Student-Instructor tab */}
 
-            <div>
-                <button>
+            <div className='flex bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max'>
+                <button
+                    className={`${accountType === "student"
+                        ?
+                        "bg-richblack-900 text-richblack-5"
+                        : "bg-transparent text-richblack-200"} py-2 px-5 rounded-full transition-all duration-200`}
+                    onClick={() => setAccountType("student")}
+                >
                     Student
                 </button>
-                <button>
+
+                <button
+                    className={`${accountType === "instructor"
+                        ?
+                        "bg-richblack-900 text-richblack-5"
+                        : "bg-transparent text-richblack-200"} py-2 px-5 rounded-full transition-all duration-200`}
+                    onClick={() => setAccountType("instructor")}
+                >
                     Instructor
                 </button>
             </div>
@@ -70,9 +95,9 @@ const SignupForm = ({ setIsLoggedIn }) => {
             <form onSubmit={submitHandler}>
 
                 {/* Firstname Lastname */}
-                <div>
-                    <label>
-                        <p>First Name<sup>*</sup></p>
+                <div className='flex flex-col md:flex-row gap-4 mt-[20px]'>
+                    <label className='w-full'>
+                        <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>First Name<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
                             type='text'
@@ -80,11 +105,12 @@ const SignupForm = ({ setIsLoggedIn }) => {
                             onChange={changeHandler}
                             placeholder='Enter first name'
                             value={formData.firstname}
+                            className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
                         />
                     </label>
 
-                    <label>
-                        <p>Last Name<sup>*</sup></p>
+                    <label className='w-full'>
+                        <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Last Name<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
                             type='text'
@@ -92,29 +118,35 @@ const SignupForm = ({ setIsLoggedIn }) => {
                             onChange={changeHandler}
                             placeholder='Enter last name'
                             value={formData.lastname}
+                            className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
                         />
                     </label>
                 </div>
 
                 {/* Email address */}
-                <label>
-                    <p>Email Address <sup>*</sup> </p>
-                    <input
-                        required
-                        type='email'
-                        placeholder='Enter  email address'
-                        onChange={changeHandler}
-                        name='email'
-                        value={formData.email}
+                <div className='mt-[20px]'>
 
-                    />
-                </label>
+                    <label className='w-full mt-[20px]'>
+                        <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Email Address <sup className='text-pink-200'>*</sup> </p>
+                        <input
+                            required
+                            type='email'
+                            placeholder='Enter  email address'
+                            onChange={changeHandler}
+                            name='email'
+                            value={formData.email}
+                            className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
+
+                        />
+                    </label>
+
+                </div>
 
                 {/* Create password and confrim Password */}
-                <div>
+                <div className='w-full flex flex-col md:flex-row gap-4 mt-[20px] '>
 
-                    <label>
-                        <p>Create password<sup>*</sup> </p>
+                    <label className='w-full relative'>
+                        <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Create password<sup className='text-pink-200'>*</sup> </p>
                         <input
                             required
                             type={
@@ -124,17 +156,18 @@ const SignupForm = ({ setIsLoggedIn }) => {
                             onChange={changeHandler}
                             name='password'
                             value={formData.password}
+                            className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
                         />
 
-                        <span>
+                        <span className='absolute right-3 top-[38px] cursor-pointer' >
                             {
-                                showPassword ? (<AiOutlineEyeInvisible onClick={eyeHandler} />) : (<AiOutlineEye onClick={eyeHandler} />)
+                                showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF' onClick={eyeHandler} />) : (<AiOutlineEye fontSize={24} fill='#AFB2BF' onClick={eyeHandler} />)
                             }
                         </span>
                     </label>
 
-                    <label>
-                        <p>Confirm password<sup>*</sup> </p>
+                    <label className='w-full relative'>
+                        <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Confirm password<sup className='text-pink-200'>*</sup> </p>
                         <input
                             required
                             type={
@@ -144,18 +177,19 @@ const SignupForm = ({ setIsLoggedIn }) => {
                             onChange={changeHandler}
                             name='confirmpassword'
                             value={formData.confirmpassword}
+                            className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]'
                         />
 
-                        <span>
+                        <span className='absolute right-3 top-[38px] cursor-pointer'>
                             {
-                                showPassword ? (<AiOutlineEyeInvisible onClick={eyeHandler1} />) : (<AiOutlineEye onClick={eyeHandler1} />)
+                                showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF' onClick={eyeHandler1} />) : (<AiOutlineEye fontSize={24} fill='#AFB2BF' onClick={eyeHandler1} />)
                             }
                         </span>
                     </label>
 
                 </div>
 
-                <button> Create account </button>
+                <button className=' w-full bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'> Create account </button>
             </form>
 
 
