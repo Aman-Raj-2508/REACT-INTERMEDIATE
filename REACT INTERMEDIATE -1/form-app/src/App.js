@@ -169,8 +169,6 @@ function App() {
         {/* <input type='submit' value="submit" /> */}
         <button>Submit</button>
 
-
-
       </form>
     </div>
   );
