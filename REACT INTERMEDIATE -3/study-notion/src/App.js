@@ -20,7 +20,7 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={<Home setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/" element={<Home setIsLoggedIn={setIsLoggedIn}5 />} />
         <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path='/signup' element={<SignUp setIsLoggedIn={setIsLoggedIn} />} />
         <Route path='/dashboard' element={
